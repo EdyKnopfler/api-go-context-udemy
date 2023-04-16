@@ -39,13 +39,14 @@ func Process(w http.ResponseWriter, r *http.Request) {
 	/*
 		TESTE:
 
-		Mudando o tempo limite para *menos* do que a função lenta dura. Nesse caso,
+		1. Mudamos o tempo limite para *menos* do que a função lenta dura. Nesse caso,
 		a goroutine continua rodando, o que pode ser o desejado porém, como o Akita
 		disse em um vídeo, fazer assíncrono *dentro* do processo não garante a
 		retentativa caso o processo caia.
 
-		Vamos supor outra situação: o tempo limite é o limite e, se a função lenta
-		não conseguir finalizar nesse tempo, temos de devolver um erro.
+		2. Vamos supor outra situação: damos um tempo limite e, se a função lenta
+		não conseguir finalizar nesse tempo, temos de devolver um erro. A duração
+		passa a ser aleatória.
 	*/
 
 	// Fazendo como no outro exemplo dado na aula: contexto com cancelamento
